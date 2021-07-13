@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from .views import (
     RegisterAPIView, LoginAPIView, UserAPIView, LogoutAPIView, 
     ProfileInfoAPIView, ProfilePasswprdAPIView
@@ -11,7 +11,6 @@ urlpatterns = [
     path('logout', LogoutAPIView.as_view()),   # http://localhost:8000/api/admin/logout   
     path('users/info', ProfileInfoAPIView.as_view()),   # http://localhost:8000/api/admin/users/info 
     path('users/password', ProfilePasswprdAPIView.as_view()),   # http://localhost:8000/api/admin/users/password 
-
 ]
 
 

@@ -1,10 +1,9 @@
+from rest_framework import exceptions, serializers
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import exceptions, serializers
-from .serializers import UserSerializer
 from core.models import User
-from .authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated
+from .serializers import UserSerializer
 from .authentication import JWTAuthentication
 
 
