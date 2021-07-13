@@ -137,3 +137,57 @@ result:
     "is_ambassador": false
 }
 
+4. POST http://localhost:8000/api/admin/logout
+after login
+result
+{
+    "message": "success"
+}
+and no coookie anymore
+
+5. PUT http://localhost:8000/api/admin/users/info
+after login as marydoe@test.com
+body:
+{
+    "first_name": "Mary88",
+    "last_name": "Doe99"
+}
+result:
+{
+    "id": 3,
+    "first_name": "Mary88",
+    "last_name": "Doe99",
+    "email": "marydoe@test.com",
+    "is_ambassador": false
+}
+
+6. PUT http://localhost:8000/api/admin/users/password
+after login
+body
+{
+    "password": "test",
+     "password_confirm": "test"
+}
+result:
+{
+    "id": 3,
+    "first_name": "Mary",
+    "last_name": "Doe",
+    "email": "marydoe@test.com",
+    "is_ambassador": false
+}
+
+then POST http://localhost:8000/api/admin/logout
+login with  
+{
+  "email": "marydoe@test.com", 
+  "password": "test"
+}
+get 
+{
+    "message": "success"
+}
+and cokie
+
+--- done
+
