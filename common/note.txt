@@ -1,0 +1,93 @@
+
+1. POST http://localhost:8000/api/admin/register
+
+'''
+body:
+{
+  "first_name": "John", 
+  "last_name": "Doe", 
+  "email": "johndoe@test.com", 
+  "password": "test123",
+  "password_confirm": "test123"
+}
+
+fields = '__all__' # for serializer
+result:
+{
+    "id": 2,
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-07-13T02:36:33.302253Z",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "johndoe@test.com",
+    "is_ambassador": false,
+    "groups": [],
+    "user_permissions": []
+}
+
+body:
+{
+  "first_name": "Mary", 
+  "last_name": "Doe", 
+  "email": "marydoe@test.com", 
+  "password": "test123",
+  "password_confirm": "test123"
+}
+
+for
+        model = User
+        fields = ['id', 'first_name', 'last_name', 'email', 'password', 'is_ambassador']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+result:
+{
+    "id": 3,
+    "first_name": "Mary",
+    "last_name": "Doe",
+    "email": "marydoe@test.com",
+    "is_ambassador": false
+}
+'''
+
+2. POST http://localhost:8000/api/admin/login
+body:
+{
+  "email": "1marydoe@test.com", 
+  "password": "test123"
+}
+
+result:
+{
+    "detail": "User not found!"
+}
+
+body:
+{
+  "email": "marydoe@test.com", 
+  "password": "test1233"
+}
+
+result:
+{
+    "detail": "Incorrect Password!"
+}
+
+body:
+{
+  "email": "marydoe@test.com", 
+  "password": "test123"
+}
+
+result:
+{
+    "id": 3,
+    "first_name": "Mary",
+    "last_name": "Doe",
+    "email": "marydoe@test.com",
+    "is_ambassador": false
+}
+

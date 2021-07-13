@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # local
     'core',
+    'administrator',
+    'common',
 
     # 3rd party
     'rest_framework',
