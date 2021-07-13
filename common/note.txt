@@ -91,3 +91,33 @@ result:
     "is_ambassador": false
 }
 
+        aJWTAuthentication = JWTAuthentication()
+
+        token = aJWTAuthentication.generate_jwt(user.id)
+
+
+        # return Response(UserSerializer(user).data)
+        return Response({'jwt': token})
+
+send jwt:  not secured
+result: 
+{
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbl9pZCI6MywiZXhwIjoxNjI2MjYwODUzLCJpYXQiOjE2MjYxNzQ0NTN9.Z4jDPtnzEYncvOw_gVLYSTJS8lPHB5czQX7K9uEi7iM"
+}
+
+cokie:
+
+{
+    "message": "success"
+}
+
+cokie:
+jwt
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbl9pZCI6MywiZXhwIjoxNjI2MjYxMTg1LCJpYXQiOjE2MjYxNzQ3ODV9.cmf8YyiSJLRBpwFTdN-ysWXKS7AIsVGRUOurZOdFYGg
+localhost
+/
+Session
+true
+
+
+
