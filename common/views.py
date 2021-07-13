@@ -4,6 +4,8 @@ from rest_framework import exceptions
 from .serializers import UserSerializer
 from core.models import User
 from .authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
+from .authentication import JWTAuthentication
 
 
 class RegisterAPIView(APIView):
@@ -43,3 +45,15 @@ class LoginAPIView(APIView):
         }
 
         return response
+
+
+class UserAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response(UserSerializer(request.user).data)
+
+
+
+

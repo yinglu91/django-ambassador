@@ -120,4 +120,20 @@ Session
 true
 
 
+3. GET http://localhost:8000/api/admin/user
+after login with   
+{
+  "email": "marydoe@test.com", 
+  "password": "test123"
+}
+
+GET http://localhost:8000/api/admin/user
+result:
+{
+    "id": 3,
+    "first_name": "Mary",
+    "last_name": "Doe",
+    "email": "marydoe@test.com",
+    "is_ambassador": false
+}
 
