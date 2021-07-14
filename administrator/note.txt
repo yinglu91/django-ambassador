@@ -1,0 +1,22 @@
+1. GET http://localhost:8000/api/admin/ambassadors
+after run
+$ python manage.py populate_ambassadors
+got
+[
+    {
+        "id": 4,
+        "first_name": "Edwin",
+        "last_name": "Harris",
+        "email": "wardlori@stephenson.com",
+        "is_ambassador": true
+    },
+    {
+        "id": 5,
+        "first_name": "Tyler",
+        "last_name": "Gonzalez",
+        "email": "madison24@hotmail.com",
+        "is_ambassador": true
+    },
+    ...
+  ]
+
