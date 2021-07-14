@@ -1,0 +1,38 @@
+1. POST http://localhost:8000/api/ambassador/login
+body:
+    {
+        "email": "wardlori@stephenson.com",
+        "password": "test123"
+    }
+result:
+{
+    "message": "success"
+}
+and jwt cookie
+
+2. GET http://localhost:8000/api/ambassador/user
+result:
+{
+    "id": 4,
+    "first_name": "Edwin",
+    "last_name": "Harris",
+    "email": "wardlori@stephenson.com",
+    "is_ambassador": true,
+    "revenue": 0
+}
+
+after run
+$ python manage.py populate_orders
+got result:
+
+{
+    "id": 4,
+    "first_name": "Edwin",
+    "last_name": "Harris",
+    "email": "wardlori@stephenson.com",
+    "is_ambassador": true,
+    "revenue": 91.8
+}
+
+
+
