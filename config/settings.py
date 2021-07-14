@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'core',
     'administrator',
     'common',
+    'ambassador',
 
     # 3rd party
     'rest_framework',
