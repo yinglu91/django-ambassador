@@ -79,6 +79,14 @@ result:
 5. DELETE http://localhost:8000/api/admin/products/1
 result: 204 No Content
 
+6. GET http://localhost:8000/api/admin/users/3/links
+[]
+
+7. GET http://localhost:8000/api/admin/orders
+[]  -- no order (complete - sure no)
+
+
+
 
 
 
