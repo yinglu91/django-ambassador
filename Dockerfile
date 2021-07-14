@@ -7,6 +7,10 @@ COPY . /app
 
 CMD python manage.py wait_for_db && python manage.py runserver 0.0.0.0:8000
 
+
+# "python manage.py makemigrations && 
+#               python manage.py migrate && 
+#               python manage.py runserver 0.0.0.0:8000"
 # docker run -itd --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql
 
 # One liner to stop / remove all of Docker containers:
