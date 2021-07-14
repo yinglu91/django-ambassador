@@ -1,3 +1,5 @@
+after login
+
 1. GET http://localhost:8000/api/admin/ambassadors
 after run
 $ python manage.py populate_ambassadors
@@ -19,4 +21,64 @@ got
     },
     ...
   ]
+
+2. GET http://localhost:8000/api/admin/products
+after run
+$ python manage.py populate_products
+result:
+[
+    {
+        "id": 2,
+        "title": "Dr. John Walker",
+        "description": "Exactly administration than free kind amount. Wonder skill far be business four.",
+        "image": "https://placekitten.com/356/328",
+        "price": "55.00"
+    },
+    {
+        "id": 3,
+        "title": "Vincent Martin",
+        "description": "Democratic camera thank air property state. Young pretty name speech.",
+        "image": "https://placeimg.com/513/26/any",
+        "price": "11.00"
+    },
+    ....
+]
+
+3. POST http://localhost:8000/api/admin/products
+body:
+    {
+        "title": "Edwin 12",
+        "description": "Harris123",
+        "image": "i.jpg",
+        "price": 10.25
+    }
+result:
+{
+    "id": 1,
+    "title": "Edwin 12",
+    "description": "Harris123",
+    "image": "i.jpg",
+    "price": "10.25"
+}
+
+4. PUT http://localhost:8000/api/admin/products/1
+body:
+    {
+        "title": "Edwin 88",
+        "price": 100.25
+    }
+result:
+{
+    "id": 1,
+    "title": "Edwin 88",
+    "description": "Harris123",
+    "image": "i.jpg",
+    "price": "100.25"
+}
+
+5. DELETE http://localhost:8000/api/admin/products/1
+result: 204 No Content
+
+
+
 
