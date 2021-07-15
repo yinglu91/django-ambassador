@@ -19,5 +19,6 @@ CMD python manage.py wait_for_db && python manage.py runserver 0.0.0.0:8000
 # docker rm $(docker ps -a -q)
 
 # $ docker-compose up
+# $ docker-compose up --build   #re-build then run
 
 # https://github.com/antoniopapa/django-ambassador/blob/main/docker-compose.yaml

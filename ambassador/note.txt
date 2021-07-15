@@ -53,5 +53,155 @@ got result:
     ...
 ]
 
+3.0 search
+GET http://localhost:8000/api/ambassador/products/backend?s=Dominguez
+[
+    {
+        "id": 23,
+        "title": "Jim Dominguez",
+        "description": "High remain number four along car boy beautiful. Project nor act reach sport million.",
+        "image": "https://placeimg.com/96/640/any",
+        "price": "10.00"
+    }
+]
+
+3. sort GET http://localhost:8000/api/ambassador/products/backend?sort=asc
+[
+    {
+        "id": 23,
+        "title": "Jim Dominguez",
+        "description": "High remain number four along car boy beautiful. Project nor act reach sport million.",
+        "image": "https://placeimg.com/96/640/any",
+        "price": "10.00"
+    },
+    {
+        "id": 26,
+        "title": "David Edwards",
+        "description": "Painting mother need. Sell really sort few. Start hospital rather task claim at fine minute.",
+        "image": "https://placekitten.com/420/72",
+        "price": "10.00"
+    },
+    {
+        "id": 3,
+        "title": "Vincent Martin",
+        "description": "Democratic camera thank air property state. Young pretty name speech.",
+        "image": "https://placeimg.com/513/26/any",
+        "price": "11.00"
+    },
+    ...
+]
+
+4. sort GET http://localhost:8000/api/ambassador/products/backend?sort=desc
+[
+    {
+        "id": 11,
+        "title": "Jonathan Vaughn",
+        "description": "View tax sister. Back could race natural administration detail.",
+        "image": "https://dummyimage.com/178x10",
+        "price": "99.00"
+    },
+    {
+        "id": 27,
+        "title": "Amy Ware MD",
+        "description": "Significant very herself respond cause white half.",
+        "image": "https://placekitten.com/36/448",
+        "price": "93.00"
+    },
+    ...
+]
+
+5. paginate
+GET http://localhost:8000/api/ambassador/products/backend?s=Dominguez
+
+{
+    "data": [
+        {
+            "id": 23,
+            "title": "Jim Dominguez",
+            "description": "High remain number four along car boy beautiful. Project nor act reach sport million.",
+            "image": "https://placeimg.com/96/640/any",
+            "price": "10.00"
+        }
+    ],
+    "meta": {
+        "total": 1,
+        "page": 1,
+        "last_page": 1
+    }
+}
+
+GET http://localhost:8000/api/ambassador/products/backend?page=2
+{
+    "data": [
+        {
+            "id": 11,
+            "title": "Jonathan Vaughn",
+            "description": "View tax sister. Back could race natural administration detail.",
+            "image": "https://dummyimage.com/178x10",
+            "price": "99.00"
+        },
+        {
+            "id": 12,
+            "title": "Timothy Bentley",
+            "description": "Shoulder example direction cost send. Including machine Republican.",
+            "image": "https://www.lorempixel.com/706/653",
+            "price": "38.00"
+        },
+        {
+            "id": 13,
+            "title": "Valerie Dunn",
+            "description": "Young wall three kid. Reality born over cut gas contain. Call economy success five difficult feel.",
+            "image": "https://placeimg.com/379/62/any",
+            "price": "45.00"
+        },
+        {
+            "id": 14,
+            "title": "Deborah Stewart",
+            "description": "Last away himself account technology woman fill. Third white manager benefit film memory.",
+            "image": "https://dummyimage.com/306x968",
+            "price": "66.00"
+        },
+        {
+            "id": 15,
+            "title": "Erica Thomas",
+            "description": "You special happy plan. East blood war lose such. Drug interest detail would that cause.",
+            "image": "https://placekitten.com/34/763",
+            "price": "46.00"
+        },
+        {
+            "id": 16,
+            "title": "Michael Griffin",
+            "description": "Artist head mean. Opportunity nature side. Management image need international leader hand hair.",
+            "image": "https://placekitten.com/965/208",
+            "price": "45.00"
+        },
+        {
+            "id": 17,
+            "title": "Mrs. Jillian Wilson",
+            "description": "Clearly begin sense maintain. End bad energy institution fear.",
+            "image": "https://www.lorempixel.com/842/468",
+            "price": "44.00"
+        },
+        {
+            "id": 18,
+            "title": "Sharon Hall",
+            "description": "Bill protect marriage yet. Single social least glass. Gas station one have investment.",
+            "image": "https://placekitten.com/757/129",
+            "price": "41.00"
+        },
+        {
+            "id": 19,
+            "title": "Carol Everett",
+            "description": "Class one agreement deal source military.",
+            "image": "https://placeimg.com/503/439/any",
+            "price": "45.00"
+        }
+    ],
+    "meta": {
+        "total": 30,
+        "page": 2,
+        "last_page": 4
+    }
+}
 
 
