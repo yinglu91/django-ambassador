@@ -29,3 +29,30 @@
     "updated_at": "2021-07-16T01:38:32.652300Z"
 }
 
+
+2. POST http://localhost:8000/api/checkout/orders 
+body:
+{
+     "first_name": "Ying",  
+     "last_name": "Lu",
+     "email": "yinglu@test.com",  
+     "address": "12 main street",
+     "country": "USA",  
+     "city": "New York",
+     "zip": "10001",  
+     "code": "FVk99u",
+     "products": [
+        {
+            "product_id": 2,
+            "quantity": 2
+        },
+        {
+            "product_id": 4,
+            "quantity": 3
+        }
+     ]
+}
+result:
+{
+    "message": "success"
+}
