@@ -13,6 +13,7 @@ from django.core.cache import cache
 import time
 import math
 import random, string
+from django_redis import get_redis_connection
 
 
 class ProductFrontendAPIView(APIView):
@@ -110,16 +111,23 @@ class RankingsAPIView(APIView):
   permission_classes = [IsAuthenticated]
 
   def get(self, request):
-    ambassadors = User.objects.filter(is_ambassador=True)
+    con = get_redis_connection("default")
+    rankings = con.zrevrangebyscore('rankings', min=0, max=10000, withscores=True)
 
-    response = list({
-      'name': a.name,
-      'revenue': a.revenue
-    } for a in ambassadors)   # not object list
+    return Response({
+      r[0].decode("utf-8"): r[1] for r in rankings
+    })
 
-    response.sort(key=lambda a: a['revenue'], reverse=True)
+    # ambassadors = User.objects.filter(is_ambassador=True)
 
-    return Response(response)
+    # response = list({
+    #   'name': a.name,
+    #   'revenue': a.revenue
+    # } for a in ambassadors)   # not object list
+
+    # response.sort(key=lambda a: a['revenue'], reverse=True)
+
+    # return Response(response)
 
 
 

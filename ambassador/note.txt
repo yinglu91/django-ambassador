@@ -249,5 +249,14 @@ result:
     },
     ...
 ]
+redis sort:
+GET http://localhost:8000/api/ambassador/rankings
+{
+    "Edwin Harris": 91.8,
+    "Wanda Harrison": 0.0,
+    "Vanessa Donovan": 0.0,
+    "Tyler Gonzalez": 0.0,
+    ...
+}
 
 
