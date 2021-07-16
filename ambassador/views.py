@@ -1,13 +1,18 @@
+from administrator.views import AmbassadorAPIView
+from rest_framework import serializers
+from rest_framework.permissions import IsAuthenticated
+from common.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
-from core.models import Product
-from .serializers import ProductSerializer
+from core.models import Link, Product, Order, User
+from .serializers import LinkSerializer, ProductSerializer
 from django.core.cache import cache
 import time
 import math
+import random, string
 
 
 class ProductFrontendAPIView(APIView):
@@ -61,6 +66,60 @@ class ProductBackendAPIView(APIView):
     })
 
 
+class LinkAPIView(APIView):
+  authentication_classes = [JWTAuthentication]
+  permission_classes = [IsAuthenticated]
+
+  def post(self, request):
+    user = request.user
+
+    serializer = LinkSerializer(data={
+      'user': user.id,
+      'code': ''.join(random.choices(string.ascii_letters + string.digits, k=6)),
+      'products': request.data['products']
+    })
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+
+    return Response(serializer.data)
+
+
+class StatsAPIView(APIView):
+  authentication_classes = [JWTAuthentication]
+  permission_classes = [IsAuthenticated]
+
+  def get(self, request):
+    user = request.user
+
+    links = Link.objects.filter(user_id=user.id)
+
+    return Response([self.format(link) for link in links])
+
+  def format(self, link):
+    orders = Order.objects.filter(code=link.code, complete=1)
+
+    return {
+      'code': link.code,
+      'count': len(orders),
+      'revenue': sum (o.ambassador_revenue for o in orders)
+    }
+
+
+class RankingsAPIView(APIView):
+  authentication_classes = [JWTAuthentication]
+  permission_classes = [IsAuthenticated]
+
+  def get(self, request):
+    ambassadors = User.objects.filter(is_ambassador=True)
+
+    response = list({
+      'name': a.name,
+      'revenue': a.revenue
+    } for a in ambassadors)   # not object list
+
+    response.sort(key=lambda a: a['revenue'], reverse=True)
+
+    return Response(response)
 
 
 

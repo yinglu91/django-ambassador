@@ -204,4 +204,50 @@ GET http://localhost:8000/api/ambassador/products/backend?page=2
     }
 }
 
+6. POST http://localhost:8000/api/ambassador/links  -- create a link
+after login using:
+{
+"email": "wardlori@stephenson.com",
+  "password": "test123"
+}
+
+body:
+{
+    "products": [2,4]
+}
+result:
+{
+    "id": 1,
+    "code": "FVk99u",
+    "created_at": "2021-07-16T01:38:32.652300Z",
+    "updated_at": "2021-07-16T01:38:32.652300Z",
+    "user": 4,
+    "products": [
+        2,
+        4
+    ]
+}
+
+7. GET http://localhost:8000/api/ambassador/stats
+[
+    {
+        "code": "FVk99u",
+        "count": 0,
+        "revenue": 0
+    }
+]
+
+8. GET http://localhost:8000/api/ambassador/rankings
+[
+    {
+        "name": "Edwin Harris",
+        "revenue": 91.8
+    },
+    {
+        "name": "Tyler Gonzalez",
+        "revenue": 0
+    },
+    ...
+]
+
 
