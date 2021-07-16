@@ -1,0 +1,31 @@
+1. GET http://localhost:8000/api/checkout/links/FVk99u
+{
+    "id": 1,
+    "products": [
+        {
+            "id": 2,
+            "title": "updated title 88",
+            "description": "Exactly administration than free kind amount. Wonder skill far be business four.",
+            "image": "https://placekitten.com/356/328",
+            "price": "55.00"
+        },
+        {
+            "id": 4,
+            "title": "Matthew Johnson",
+            "description": "Recently start mean whom. Red respond per just.",
+            "image": "https://dummyimage.com/496x329",
+            "price": "55.00"
+        }
+    ],
+    "user": {
+        "id": 4,
+        "first_name": "Edwin",
+        "last_name": "Harris",
+        "email": "wardlori@stephenson.com",
+        "is_ambassador": true
+    },
+    "code": "FVk99u",
+    "created_at": "2021-07-16T01:38:32.652300Z",
+    "updated_at": "2021-07-16T01:38:32.652300Z"
+}
+

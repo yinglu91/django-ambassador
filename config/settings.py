@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'administrator',
     'common',
     'ambassador',
+    'checkout',
 
     # 3rd party
     'rest_framework',
