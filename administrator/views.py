@@ -2,6 +2,7 @@ from rest_framework import exceptions, serializers, generics, mixins
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.core.cache import cache
 
 from core.models import User, Product, Link, Order, OrderItem
 from common.serializers import UserSerializer
@@ -28,6 +29,15 @@ class ProductGenericAPIView(
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    @staticmethod
+    def clear_products_cache():
+      cache.delete('products_backend')
+      
+      for key in cache.keys('*'):
+        if 'products_frontend' in key:
+          cache.delete(key)
+
+
     def get(self, request, pk=None):
       if pk:
         return self.retrieve(request, pk)
@@ -35,13 +45,19 @@ class ProductGenericAPIView(
       return self.list(request)
     
     def post(self, request):
-      return self.create(request)
+      resonse = self.create(request)
+      self.clear_products_cache()
+      return resonse
 
     def put(self, request, pk=None):
-      return self.partial_update(request, pk)
+      resonse = self.partial_update(request, pk)
+      self.clear_products_cache()
+      return resonse
 
     def delete(self, request, pk=None):
-      return self.destroy(request, pk)
+      resonse = self.destroy(request, pk)
+      self.clear_products_cache()
+      return resonse
 
 
 class LinkAPIView(APIView):
